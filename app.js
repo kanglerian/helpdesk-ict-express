@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
   socket.on("message", async (response) => {
     if (!response.not_save) {
       try {
-        await Chat.create({
+        const data = await Chat.create({
           client: response.client,
           name_room: response.name_room,
           token: response.token,
@@ -61,11 +61,27 @@ io.on('connection', (socket) => {
           latitude: response.latitude,
           longitude: response.longitude,
         });
+        io.emit('message', data)
       } catch (err) {
         console.log(err.message);
       }
+    } else {
+      const data = {
+        client: response.client,
+        name_room: response.name_room,
+        token: response.token,
+        not_save: response.not_save,
+        uuid_sender: response.uuid_sender,
+        name_sender: response.name_sender,
+        role_sender: response.role_sender,
+        message: response.message,
+        reply: response.reply,
+        date: response.date,
+        latitude: response.latitude,
+        longitude: response.longitude,
+      };
+      io.emit('message', data)
     }
-    io.emit('message', response)
   });
 });
 

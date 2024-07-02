@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Chat } = require('../models');
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 
 /* GET chats listing. */
 router.get('/', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/admin/:token', async (req, res) => {
         token: req.params.token
       }
     });
-    if(!chats){
+    if (!chats) {
       return res.status(404).json({
         message: `Pesan berdasarkan token ${req.params.token} tidak ditemukan!`
       });
@@ -30,21 +30,22 @@ router.get('/admin/:token', async (req, res) => {
   }
 });
 
-router.get('/student/:token', async (req, res) => {
+router.get('/student/:token/:room', async (req, res) => {
   try {
+    console.log(req.body);
     const chats = await Chat.findAll({
       where: {
         token: req.params.token,
-        [Sequelize.Op.and]: [
-          { reply: req.body.reply },
-          { [Sequelize.Op.or]: [
-              { client: req.body.client }
-            ]
-          }
+        [Op.or]: [
+          {
+            reply: req.params.room,
+          }, {
+            client: req.params.room,
+          },
         ]
       }
     });
-    if(!chats){
+    if (!chats) {
       return res.status(404).json({
         message: `Pesan berdasarkan token ${req.params.token} tidak ditemukan!`
       });
@@ -63,7 +64,7 @@ router.get('/dashboard/:token', async (req, res) => {
         role_sender: 'S'
       }
     });
-    if(!chats){
+    if (!chats) {
       return res.status(404).json({
         message: `Pesan berdasarkan token ${req.params.token} tidak ditemukan!`
       });
