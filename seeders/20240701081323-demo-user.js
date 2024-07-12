@@ -8,7 +8,7 @@ module.exports = {
         uuid: "0194818248",
         name: "Student Helpdesk",
         username: "student",
-        password: "studenthelpdesk",
+        password: "helpdeskstudent",
         role: "S",
         createdAt: new Date(),
         updatedAt: new Date(),
