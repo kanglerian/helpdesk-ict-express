@@ -14,6 +14,7 @@ const roomsRouter = require('./routes/rooms');
 const chatsRouter = require('./routes/chats');
 
 const allowedOriginSocket = [
+  'http://localhost',
   'http://127.0.0.1:5173',
   'http://localhost:5173',
 ];
