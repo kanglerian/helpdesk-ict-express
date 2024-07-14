@@ -75,4 +75,19 @@ router.get('/dashboard/:token', async (req, res) => {
   }
 });
 
+router.delete('/:token', async(req, res) => {
+  try {
+    await Chat.destroy({
+      where: {
+        token: req.params.token,
+      }
+    });
+    return res.json({
+        message: `Pesan dengan token ${req.params.token} berhasil dihapus!`
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 module.exports = router;
