@@ -13,7 +13,9 @@ router.get('/', async (req, res) => {
     }
     return res.json(users);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 

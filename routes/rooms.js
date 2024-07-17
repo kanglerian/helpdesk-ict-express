@@ -8,7 +8,9 @@ router.get('/', async (req, res) => {
     const rooms = await Room.findAll();
     return res.json(rooms);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -27,7 +29,9 @@ router.get('/:token', async (req, res) => {
     }
     return res.json(room);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 

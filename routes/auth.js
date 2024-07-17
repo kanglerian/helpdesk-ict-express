@@ -19,7 +19,9 @@ router.post('/login', async (req, res) => {
     }
     return res.json(user);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -39,7 +41,9 @@ router.post('/admin/login', async (req, res) => {
     }
     return res.json(user);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 

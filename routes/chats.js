@@ -8,7 +8,9 @@ router.get('/', async (req, res) => {
   try {
     res.send('Helpdesk Chat 🇮🇩');
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -26,7 +28,9 @@ router.get('/admin/:token', async (req, res) => {
     }
     return res.json(chats);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -52,7 +56,9 @@ router.get('/student/:token/:room', async (req, res) => {
     }
     return res.json(chats);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -71,7 +77,9 @@ router.get('/dashboard/:token', async (req, res) => {
     }
     return res.json(chats);
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
@@ -86,7 +94,9 @@ router.delete('/:token', async(req, res) => {
         message: `Pesan dengan token ${req.params.token} berhasil dihapus!`
     });
   } catch (error) {
-    console.log(error.message);
+    return res.status(500).json({
+      message: 'Terjadi kesalahan di server. Silakan coba lagi nanti.'
+    });
   }
 });
 
