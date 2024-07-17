@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     name_room: DataTypes.STRING,
     token: DataTypes.STRING,
     not_save: DataTypes.BOOLEAN,
-    uuid_sender: DataTypes.STRING,
+    uuid_sender: DataTypes.UUID,
     name_sender: DataTypes.STRING,
     role_sender: DataTypes.CHAR,
     message: DataTypes.TEXT,

@@ -10,36 +10,45 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       client: {
-        type: Sequelize.STRING(20)
+        type: Sequelize.STRING(20),
+        allowNull: false,
       },
       name_room: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       token: {
-        type: Sequelize.STRING(20)
+        type: Sequelize.STRING(20),
+        allowNull: false,
       },
       not_save: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
         defaultValue: 0
       },
       uuid_sender: {
-        type: Sequelize.STRING(10)
+        type: Sequelize.UUID,
+        allowNull: false,
       },
       name_sender: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       role_sender: {
-        type: Sequelize.CHAR(1)
+        type: Sequelize.CHAR(1),
+        allowNull: false,
       },
       message: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       reply: {
         type: Sequelize.STRING,
         allowNull: true
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
       },
       latitude: {
         type: Sequelize.STRING,

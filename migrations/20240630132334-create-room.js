@@ -10,17 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       token: {
-        type: Sequelize.STRING(20)
+        type: Sequelize.STRING(20),
+        allowNull: false,
+        unique: true
       },
       type: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
         defaultValue: 0
       },
       secret: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
         defaultValue: 0
       },
       createdAt: {
